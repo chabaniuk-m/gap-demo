@@ -37,13 +37,15 @@
 ---
 
 - Клієнтська сторона
-   1. JavaScript 
-   2. HTML
-   3. CSS
+   - JavaScript 
+   - HTML
+   - CSS
+
 - Серверна сторона
-  1. Flask
-  2. Python
-  3. C++
+  - Flask
+  - Python
+  - C++
+
 
 ---
 
