@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "main_style.css">
+    <title>Main page</title>
+    <script src="calculator.js" async></script>
+</head>
+<body>
+    <div class="wrap_flex">
+        <div class="header">
+            <p>Груповий проект із Загальної алгебри</p>
+        </div>
+
+        <div class="main">
+            <div class="navbar">
+                <div class="top_">
+                    <div class="list">
+                        <ul>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження оберненого елемента. Ділення чисел
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Швидке піднесення у степінь, використовуючи переведення числа у форму Монтгомері
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Розклад числа на множники (наївний алгоритм та алгоритм Поларда) 
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Обчислення квадратного кореня числа 
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Обчислення дискретного логарифму числа
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження порядку елемента групи. Визначення чи є елемент генератором мультиплікативної групи поля
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження функції Ейлера від заданого числа  та функції Кармайкла від заданого числа 
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Ймовірнісна перевірка числа на простоту (тест Міллера-Рабіна) 
+                            </a>
+                          </li>
+                          <li><a href="Solution_Test.html"> Додавання, віднімання, множення двох многочленів. </a></li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження похідної многочлена. Знаходження значення многочлена у точці.
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження частки та остачі від ділення одного многочлена на інший. Знаходження НСД двох многочленів.
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Знаходження кругового многочлена заданого порядку
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Розклад кругового многочлена на незвідні множники використовуючи многочлени Ri
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Перевірка чи є многочлен незвідним
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Solution_Test.html">
+                              Додавання, віднімання, множення двох многочленів. Нормування многочлена. Швидке піднесення многочлена у степінь
+                            </a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div id="calculator">
+                        <div class="top">
+                          <span class="clear">C</span>
+                          <div class="screen"></div>
+                        </div>
+          
+                        <div class="keys">
+                          <span>7</span>
+                          <span>8</span>
+                          <span>9</span>
+                          <span class="operator">+</span>
+                          <span>4</span>
+                          <span>5</span>
+                          <span>6</span>
+                          <span class="operator">-</span>
+                          <span>1</span>
+                          <span>2</span>
+                          <span>3</span>
+                          <span class="operator">÷</span>
+                          <span>0</span>
+                          <span>.</span>
+                          <span class="eval">=</span>
+                          <span class="operator">x</span>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="authors">
+                    <h1>Виконавці:</h1>
+                    <ul>
+                        <li>Чабанюк - Видатна людина</li>
+                        <li>Кухарчук - Видатна людина</li>
+                        <li>Гордійчук - Видатна людина</li>
+                        <li>Кілко - Видатна людина </li>
+                        <li>Дзюгал - Видатна людина</li>
+                        <li>Бега - Видатна людина</li>
+                        <li>Прохоров - Видатна людина</li>
+                        <li>Олизько - Видатна людина</li>
+                        <li>Положенець - Видатна людина</li>
+                        <li>Поляков - Видатна людина</li>
+                        <li>Руденко - Видатна людина</li>
+                        <li>Шупляков - Видатна людина</li>
+                        <li>Гаврилюк - Видатна людина</li>
+                        <li>Медведчук - Видатна людина</li>
+                    </ul>
+                </div>
+                <h1>Код програми:</h1>
+
+                <textarea cols="100" rows="25">
+                struct Input {};
+                        struct MoreInput {};
+                        
+                        struct ImplementationBase {
+                            virtual void setMoreInput(MoreInput) = 0;
+                            virtual void run(Input input) = 0;
+                        };
+                        
+                        
+                        struct MoreInputA {};
+                        MoreInputA convertToA(MoreInput);
+                        
+                        struct ImplementationA : public ImplementationBase {
+                            void run(Input input, MoreInputA more_input);
+                        
+                            MoreInputA more_input_a;
+                            void setMoreInput(MoreInput more_input) override {
+                                more_input_a = convertToA(more_input);
+                            }
+                        
+                            void run(Input input) override {
+                                run(input, more_input_a);
+                            }
+                        };
+                </textarea>
+        
+                <h1>Про проект</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+                      doloribus consequatur beatae laborum expedita quo unde esse
+                      assumenda praesentium amet, rem nemo consequuntur tempore odio
+                      veniam est laudantium nihil! Est? Vitae voluptatem dicta vel minus
+                      adipisci. Aliquam, debitis. Quibusdam quos, quo atque, repellat
+                      nulla fugiat sed cum dolore minus impedit maxime excepturi natus
+                      quia animi unde aperiam minima, quod veniam. Repellat consequatur,
+                      animi explicabo, soluta ipsum numquam similique magnam officiis
+                      enim iure omnis inventore laborum delectus cum quo. Alias maxime
+                      recusandae quam voluptates minima atque sapiente doloribus
+                      aspernatur accusamus eveniet? Quidem architecto quod repudiandae
+                      quos tempore. Saepe exercitationem quasi veritatis ut adipisci ea
+                      vero omnis sunt cum earum cupiditate officiis rerum aperiam eaque
+                      nulla aspernatur explicabo sequi, necessitatibus perferendis
+                      tempora. Animi nostrum eligendi, fugiat reprehenderit dolor
+                      explicabo recusandae repellat eius quos velit eaque quasi, sit
+                      provident, esse tenetur impedit assumenda maxime quis dolorum
+                      dolores earum! Rem, labore! Eius, ipsum ipsam. Saepe, delectus
+                      fugit eum dolorem voluptas nam. Maxime, ut officiis? Harum soluta
+                      aliquid, sequi laudantium enim eius aperiam autem cumque alias
+                      provident explicabo quas laboriosam fuga expedita voluptatibus
+                      magnam quod! Optio praesentium, cum aperiam ipsum tempora quae
+                      consequuntur quo omnis tenetur officiis accusamus obcaecati
+                      provident quisquam, deserunt fuga dolorem consequatur. Iusto quam
+                      nulla consequatur odit voluptates repellat voluptatum dicta
+                      corrupti? Repellat, dicta explicabo at optio, sapiente natus
+                      voluptatibus exercitationem molestiae consectetur incidunt
+                      doloribus porro quasi nesciunt fugit. Unde iste quaerat ullam
+                      earum inventore, eligendi dolorem, rerum totam aspernatur a
+                      excepturi? Necessitatibus animi deleniti consectetur eum culpa
+                      voluptas, aliquid minus illum excepturi nisi sapiente ipsam
+                      obcaecati sunt dolores nesciunt explicabo odit dicta maxime hic
+                      tenetur, perspiciatis, facilis eligendi? Aliquam, consequuntur
+                      alias! Sit vel quas fugiat magnam voluptatem aliquam similique
+                      pariatur, ex ipsa harum, ad quam ab error vitae quae, commodi
+                      mollitia! Veritatis blanditiis placeat dolore reiciendis
+                      asperiores vel quia, molestiae vitae? Placeat beatae consequuntur
+                      dignissimos, reprehenderit perferendis id accusantium tempora
+                      exercitationem sapiente est blanditiis aliquid! Suscipit quis rem
+                      nulla nihil sint magni, adipisci libero nesciunt odit qui
+                      laudantium est accusantium quia! Minus iure cupiditate veritatis
+                      architecto in asperiores, laudantium illo, unde assumenda debitis
+                      esse id, soluta doloremque? Harum assumenda possimus ab error
+                      inventore, nam, facere eveniet fuga odit quod asperiores at! Error
+                      aspernatur architecto rerum voluptatem blanditiis fuga. Beatae nam
+                      accusantium autem omnis dolor pariatur nisi ipsum cum
+                      voluptatibus, distinctio velit quasi veritatis molestiae modi
+                      alias minus laborum laudantium sapiente necessitatibus? Aliquid
+                      eveniet voluptatem, ex cumque magnam architecto dolore
+                      voluptatibus quo facere nisi nihil pariatur minus illo, nobis odio
+                      obcaecati! Dolorum nemo fugit id vel incidunt sint fugiat
+                      laudantium qui dolor! Illum deleniti vel minima earum nobis quas,
+                      unde numquam molestias doloribus quaerat consectetur, nesciunt non
+                      placeat possimus eos asperiores quis enim. Temporibus ipsum
+                      laboriosam vel, recusandae nostrum iure numquam alias!
+                    </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            Використані джерела: Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ipsa delectus accusamus exercitationem ad hic dolorum doloribus,
+            tempora rerum placeat, pariatur maiores voluptas earum fugiat sint eos
+            architecto. Dolore, itaque eaque? Repellat labore iure quae illo alias
+            perferendis! Cupiditate aut nihil quod ipsam non, dolor sit, ad quas
+            modi quia reprehenderit hic omnis exercitationem, debitis ratione eos
+            nostrum corrupti error explicabo. Asperiores ducimus adipisci
+            reiciendis, dolorem laudantium deleniti veritatis illo alias fuga
+            maiores quae debitis id saepe voluptate sit sunt quis aut ex mollitia
+            provident dolore recusandae distinctio accusantium! Numquam, doloribus!
+        </div>
+    </div>
+</body>
+</html>
