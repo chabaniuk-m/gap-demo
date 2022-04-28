@@ -27,8 +27,11 @@ public:
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator - (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator * (const Polynom& lhs, const Polynom& rhs);
+    friend Polynom operator / (const Polynom& lhs, const Polynom& rhs);
+    friend Polynom operator % (const Polynom& lhs, const Polynom& rhs);
     friend bool operator == (const Polynom& lhs, const Polynom& rhs);
     friend bool operator != (const Polynom& lhs, const Polynom& rhs);
+    friend Polynom operator gcd (const Polynom& lhs, const Polynom& rhs); //greatest common divisor
     ~Polynom();
 };
 
