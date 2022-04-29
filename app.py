@@ -14,3 +14,7 @@ def solution_test_GET():
         print(request.form.get('polynom'))
     return render_template('solution_test.html')
 
+@app.route("/error_page", methods=['GET', 'POST'])
+def error_test_GET():
+    return render_template('error_page.html')
+

@@ -79,6 +79,58 @@ textarea {
     width: 100%;
     height: auto;
 }
+
+.input{
+  width: 100%;
+  height: 10%;
+  background-color: #8bceec;
+
+}
+
+
+button.input {
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  line-height: 45px;
+  border-radius: 15px;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: #8bceec;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+button.input:hover {
+  background: #2EE59D;
+  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+
+.output{
+  width: 100%;
+  height: 10%;
+  background-color: #8becb7;
+}
+
+div.error{
+  width: 100%;
+  height: 10%;
+  background-color: #ec5c5c;
+}
+
+h1.error{
+  color:red;
+  text-decoration: 3px #ec5c5c underline;
+}
+
+
 @media (max-width: 992px){
     .main {
         flex-direction: column;
@@ -154,16 +206,7 @@ h1 {
   text-align: center;
   text-decoration: 3px #66ff44 underline;
 }
-.input{
-  width: 100%;
-  height: 10%;
-  background-color: #8bceec;
-}
-.output{
-  width: 100%;
-  height: 10%;
-  background-color: #8becb7;
-}
+
 
 /*Calculator*/
 #calculator {
