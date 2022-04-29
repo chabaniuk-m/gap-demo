@@ -1,30 +1,25 @@
 #include <iostream>
+
+#include "..\const.h"
 using namespace std;
 
-class Polynomial {
+int inverted_element(int value) {
 
-private:
-    int const mod = 45;
+    int result = 0;
 
-public:
-    int inverted_element(int value) {
+    // test output
+    cout << "mod from task_3: " << mod;
 
-        int modul = mod;
+    for (int i = 0; i < mod; i++) {
 
-        int result = 0;
+        result = (value * i) % mod;
 
-        for (int i = 0; i < modul; i++) {
+        if (result == 1) {
 
-            result = (value * i) % modul;
-
-            if (result == 1) {
-
-                return i;
-
-            }
+            return i;
 
         }
 
     }
 
-};
+}
