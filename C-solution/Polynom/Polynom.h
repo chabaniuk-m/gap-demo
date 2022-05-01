@@ -1,6 +1,5 @@
-//#ifndef POLYNOM_H
-//#define POLYNOM_H
 #pragma once
+
 #include <string>
 
 /*
@@ -9,8 +8,6 @@
 * Коефіцієнти зберігаються у зростаючому порядку
 * 
 * TO DO - множення поліномів, parse from string
-* 
-* // замінив IFNDEF на pragma once бо в мене не працювало
 */
 class Polynom {
 public:
@@ -34,5 +31,3 @@ public:
     //friend Polynom gcd (const Polynom& lhs, const Polynom& rhs); //greatest common divisor --  not implemented yet
     ~Polynom();
 };
-
-//#endif
