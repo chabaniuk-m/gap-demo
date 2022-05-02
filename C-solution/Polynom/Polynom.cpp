@@ -1,5 +1,5 @@
 #include "Polynom.h"
-#include "const.h"
+#include "..\const.h"
 #include <iostream>
 
 Polynom::Polynom(std::string pol)

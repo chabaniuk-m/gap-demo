@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "..\..\const.h"
 
 int bitLength(int n) {
     int result = 0;
