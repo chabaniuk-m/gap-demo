@@ -1,6 +1,8 @@
 #include "Polynom.h"
 #include "..\const.h"
+#include "..\Int\Int.h"
 #include <iostream>
+#include <cassert>
 
 Polynom::Polynom(std::string pol)
 {
@@ -28,13 +30,23 @@ Polynom::Polynom(int length)
 
 Polynom::Polynom()
 {
-	// створюємо "1" якщо викликали пустий конструктор
-	coeff = new int[1]{ 1 };
+	// створюємо "0" якщо викликали пустий конструктор
+	coeff = new int[1]{ 0 };
 	len = 1;
 	power = 0;
 }
 
-void Polynom::print()
+Polynom::Polynom(const Polynom& toCopy)
+{
+    this->len = toCopy.len;
+    this->power = len - 1;
+    coeff = new int[len];
+
+    for (int i = 0; i < len; i++)
+        coeff[i] = toCopy.coeff[i];
+}
+
+void Polynom::print() const
 {
 	for (int i = 0; i <= power; i++)
 	{
@@ -62,7 +74,7 @@ void Polynom::print()
 
 Polynom::~Polynom()
 {
-	
+    delete []coeff;
 }
 
 Polynom operator+(const Polynom& lhs, const Polynom& rhs)
@@ -159,6 +171,48 @@ Polynom operator*(const Polynom& lhs, const Polynom& rhs)
 	}
 
 	return result;
+}
+
+std::pair<Polynom,Polynom> Polynom::division(const Polynom& lhs, const Polynom& rhs)
+{
+    /*
+     * Вважається, що:
+     * - mod - просте число (!Обов'язкова умова для кільця многочленів!)
+     * - Коефіцієнт при старшій степені - не 0
+     * - Всі коефіцієнти приймають значення з інтервалу [0;mod-1]
+     * Мабуть потрібно обробляти в конструкторі(?)
+    */
+    assert(isPrime(mod));
+    assert(rhs != Polynom());
+
+    int currQuotientPower = lhs.power - rhs.power;
+    int** divTable = generateDivisionTable();
+
+    Polynom quotient(currQuotientPower+1);
+    Polynom remainder = lhs;
+
+    for(int i=lhs.power; remainder!=Polynom() && remainder.power>=rhs.power; i--, currQuotientPower--)
+    {
+        if(remainder.coeff[i]==0)
+        {
+            quotient.coeff[currQuotientPower] = 0;
+            continue;
+        }
+
+        int newCoeff = divTable[remainder.coeff[i]][rhs.coeff[rhs.power]];
+        quotient.coeff[currQuotientPower] = newCoeff;
+
+        for(int j=i; j>=currQuotientPower; j--)
+        {
+            remainder.coeff[j] = remainder.coeff[j] - normalize(newCoeff*rhs.coeff[rhs.power-(i-j)]);
+            remainder.coeff[j] = normalize(remainder.coeff[j]);
+        }
+    }
+    deleteDivisionTable(divTable);
+
+    //!скоротити remainder (прибрати нулі)
+
+    return {quotient, remainder};
 }
 
 bool operator==(const Polynom& lhs, const Polynom& rhs)

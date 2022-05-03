@@ -10,16 +10,18 @@
 * TO DO - множення поліномів, parse from string
 */
 class Polynom {
+    static std::pair<Polynom,Polynom> division(const Polynom& lhs, const Polynom& rhs); //<Quotient,Remainder> (used for operators / and %)
 public:
     int len; // polynom length
     int power; // polynom power
     int* coeff; // coefficients in ascending order
     // 1*x^6+1*x^3+18*x^1+7*x^0
-    Polynom(std::string pol); // initialize polynom from string
+    explicit Polynom(std::string pol); // initialize polynom from string
     Polynom(int* coeff, int len); // initialize polynom from array
-    Polynom(int length); // initialize polynom of length len with empty coefficients
+    explicit Polynom(int length); // initialize polynom of length len with empty coefficients
     Polynom(); // initialize empty polynom
-    void print(); // prints polynom to console
+    Polynom(const Polynom& toCopy); // copy constructor
+    void print() const; // prints polynom to console
     // operator overloading
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator - (const Polynom& lhs, const Polynom& rhs);
