@@ -16,9 +16,9 @@ bool isPrime(int n);
  * Usage:
  * int** myTable = generateDivisionTable();
  * ...(a/b = myTable[a][b])...
- * for(int i=0; i<mod; i++)  delete [](myTable[i]);
- * delete []myTable;
+ * deleteDivisionTable(myTable);
  */
-int** generateDivisionTable(int size = mod);
+int** generateDivisionTable();
+void deleteDivisionTable(int** table);
 
 // #end

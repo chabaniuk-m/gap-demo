@@ -11,7 +11,31 @@ bool isPrime(int n)
     return true;
 }
 
-int** generateDivisionTable(int size)
+int** generateDivisionTable()
 {
+    int** table = new int*[mod];
+    for(int i=0; i<mod; i++) table[i] = new int[mod];
+    for(int i=0; i<mod; i++)
+    {
+        table[0][i] = 0;  // 0/a = 0
+        table[i][0] = -1; // a/0 = error(-1)
+    }
 
+    for (int i=1; i<mod; i++)
+    {
+        for (int j=1; j<mod; j++)
+        {
+            int res = (i*j) % mod;
+            table[res][i] = j;
+            table[res][j] = i;
+        }
+    }
+
+    return table;
+}
+
+void deleteDivisionTable(int** table)
+{
+    for(int i=0; i<mod; i++)  delete [](table[i]);
+    delete []table;
 }
