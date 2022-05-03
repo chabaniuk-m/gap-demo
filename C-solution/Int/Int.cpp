@@ -11,6 +11,11 @@ bool isPrime(int n)
     return true;
 }
 
+int normalize(int n)
+{
+    return n>=0 ? n%mod : (mod-std::abs(n)%mod);
+}
+
 int** generateDivisionTable()
 {
     int** table = new int*[mod];
