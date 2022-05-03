@@ -1,6 +1,7 @@
 #include "Polynom.h"
 #include "..\const.h"
 #include <iostream>
+#include <cassert>
 
 Polynom::Polynom(std::string pol)
 {
@@ -28,8 +29,8 @@ Polynom::Polynom(int length)
 
 Polynom::Polynom()
 {
-	// створюємо "1" якщо викликали пустий конструктор
-	coeff = new int[1]{ 1 };
+	// створюємо "0" якщо викликали пустий конструктор
+	coeff = new int[1]{ 0 };
 	len = 1;
 	power = 0;
 }
@@ -62,7 +63,7 @@ void Polynom::print()
 
 Polynom::~Polynom()
 {
-	
+    delete []coeff;
 }
 
 Polynom operator+(const Polynom& lhs, const Polynom& rhs)
