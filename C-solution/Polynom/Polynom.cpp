@@ -243,6 +243,16 @@ std::pair<Polynom,Polynom> Polynom::division(const Polynom& lhs, const Polynom& 
     return {quotient, remainder};
 }
 
+Polynom operator / (const Polynom& lhs, const Polynom& rhs)
+{
+    return Polynom::division(lhs,rhs).first;
+}
+
+Polynom operator % (const Polynom& lhs, const Polynom& rhs)
+{
+    return Polynom::division(lhs,rhs).second;
+}
+
 bool operator==(const Polynom& lhs, const Polynom& rhs)
 {
 	for (int i = 0; i <= std::min(lhs.power, rhs.power); i++)
