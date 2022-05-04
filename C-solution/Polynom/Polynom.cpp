@@ -100,6 +100,18 @@ void Polynom::recover()
     }
 }
 
+Polynom gcd(const Polynom& lhs, const Polynom& rhs)
+{
+    Polynom x(lhs), y(rhs);
+    while(y != Polynom())
+    {
+        Polynom r = x%y;
+        x = y;
+        y = r;
+    }
+    return x;
+}
+
 Polynom::~Polynom()
 {
     delete []coeff;
