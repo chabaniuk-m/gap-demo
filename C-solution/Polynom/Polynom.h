@@ -23,6 +23,7 @@ public:
     Polynom(const Polynom& toCopy); // copy constructor
     void print() const; // prints polynom to console
     void recover(); // recover coefficients values, remove first zeros
+    friend Polynom gcd(const Polynom& lhs, const Polynom& rhs); //greatest common divisor
     // operator overloading
     Polynom& operator = (const Polynom& toCopy);
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);
@@ -32,6 +33,5 @@ public:
     friend Polynom operator % (const Polynom& lhs, const Polynom& rhs); // remainder
     friend bool operator == (const Polynom& lhs, const Polynom& rhs);
     friend bool operator != (const Polynom& lhs, const Polynom& rhs);
-    //friend Polynom gcd (const Polynom& lhs, const Polynom& rhs); //greatest common divisor --  not implemented yet
     ~Polynom();
 };
