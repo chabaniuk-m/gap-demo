@@ -192,10 +192,8 @@ Polynom operator-(const Polynom& lhs, const Polynom& rhs)
 Polynom operator*(const Polynom& lhs, const Polynom& rhs)
 {
 	/*
-	* Спочатку множимо лівий многочлен на правий, після
-	* цього результат ділимо на лівий многочлен і повертаємо остачу
+	* Множимо лівий многочлен на правий у кільці, беручи коефіцієнти по модулю
 	* Приклад: (2x^2 + x + 2)*(x^2+2x+1) = 2x^4 + x^2 + 2 (mod 5)
-	* Ділимо 2x^4 + x^2 + 2 на 2x^2 + x + 2 і повертаємо остачу (не реалізовано)
 	*/
 	Polynom result(lhs.power + rhs.power + 1);
 	for (int i = 0; i <= lhs.power; i++)
