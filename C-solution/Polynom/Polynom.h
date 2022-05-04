@@ -22,6 +22,7 @@ public:
     Polynom(); // initialize empty polynom
     Polynom(const Polynom& toCopy); // copy constructor
     void print() const; // prints polynom to console
+    void recover(); // recover coefficients values, remove first zeros
     // operator overloading
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator - (const Polynom& lhs, const Polynom& rhs);

@@ -11,7 +11,7 @@ bool isPrime(int n)
     return true;
 }
 
-int normalize(int n)
+int recover(int n)
 {
     return n>=0 ? n%mod : (mod-std::abs(n)%mod);
 }

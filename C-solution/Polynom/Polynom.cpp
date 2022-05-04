@@ -72,6 +72,33 @@ void Polynom::print() const
 	std::cout << "\n";
 }
 
+void Polynom::recover()
+{
+    // remove zeroes
+    // якби coeff був vector, можна було б зробити просто через pop_back()
+    // 1 + 2x + 0x^2 + 3x^3 + 0x^4 +0x^5 power = 5, k = 3
+    int newPower = power;
+    while (coeff[newPower] == 0 && newPower > 0)
+    {
+        newPower--;
+    }
+    if (newPower != power) // якщо є нулі в старших коефіцієнтах
+    {
+        int* temp = new int[newPower+1];
+        for (int l = 0; l <= newPower; l++)
+            temp[l] = coeff[l];
+        delete[] coeff;
+
+        coeff = temp;
+        power = newPower;
+        len = newPower+1;
+    }
+    for (int l = 0; l <= power; l++)
+    {
+        coeff[l] = number::recover(coeff[l]);
+    }
+}
+
 Polynom::~Polynom()
 {
     delete []coeff;
@@ -129,23 +156,7 @@ Polynom operator-(const Polynom& lhs, const Polynom& rhs)
 		result.coeff[j] = rhs.coeff[j];
 		j++;
 	}
-	// remove zeroes
-	// якби coeff був vector, можна було б зробити просто через pop_back()
-	// 1 + 2x + 0x^2 + 3x^3 + 0x^4 +0x^5 power = 5, k = 3
-	int k = result.power;
-	while (result.coeff[k] == 0 && k >= 0)
-	{
-		k--;
-	}
-	if (k != result.power) // якщо є нулі в старших коефіцієнтах
-	{
-		int* temp = new int[k];
-		for (int l = 0; l < k; l++)
-			temp[l] = result.coeff[l];
-		delete[] result.coeff;
-		result.coeff = temp;
-	}
-
+    result.recover();
 	return result;
 }
 
@@ -165,10 +176,7 @@ Polynom operator*(const Polynom& lhs, const Polynom& rhs)
 			result.coeff[result.power - (i + j)] += (lhs.coeff[lhs.power - i] * rhs.coeff[rhs.power - j]);
 		}
 	}
-	for (int i = 0; i < result.len; i++)
-	{
-		result.coeff[i] = result.coeff[i] % mod;
-	}
+	result.recover();
 
 	return result;
 }
@@ -182,11 +190,11 @@ std::pair<Polynom,Polynom> Polynom::division(const Polynom& lhs, const Polynom& 
      * - Всі коефіцієнти приймають значення з інтервалу [0;mod-1]
      * Мабуть потрібно обробляти в конструкторі(?)
     */
-    assert(isPrime(mod));
+    assert(number::isPrime(mod));
     assert(rhs != Polynom());
 
     int currQuotientPower = lhs.power - rhs.power;
-    int** divTable = generateDivisionTable();
+    int** divTable = number::generateDivisionTable();
 
     Polynom quotient(currQuotientPower+1);
     Polynom remainder = lhs;
@@ -204,13 +212,14 @@ std::pair<Polynom,Polynom> Polynom::division(const Polynom& lhs, const Polynom& 
 
         for(int j=i; j>=currQuotientPower; j--)
         {
-            remainder.coeff[j] = remainder.coeff[j] - normalize(newCoeff*rhs.coeff[rhs.power-(i-j)]);
-            remainder.coeff[j] = normalize(remainder.coeff[j]);
+            remainder.coeff[j] = remainder.coeff[j] - number::recover(newCoeff * rhs.coeff[rhs.power - (i - j)]);
+            remainder.coeff[j] = number::recover(remainder.coeff[j]);
         }
     }
-    deleteDivisionTable(divTable);
+    number::deleteDivisionTable(divTable);
 
-    //!скоротити remainder (прибрати нулі)
+    quotient.recover();
+    remainder.recover();
 
     return {quotient, remainder};
 }
