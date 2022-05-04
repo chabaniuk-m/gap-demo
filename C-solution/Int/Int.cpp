@@ -1,8 +1,9 @@
 #include "Int.h"
 #include <cmath>
 
-bool isPrime(int n)
+bool number::isPrime(int n)
 {
+    if(n<2) return false;
     int sqrt = static_cast<int>(std::sqrt(n)) + 1;
     for(int i=2; i<=sqrt; i++)
     {
@@ -11,12 +12,12 @@ bool isPrime(int n)
     return true;
 }
 
-int normalize(int n)
+int number::recover(int n)
 {
     return n>=0 ? n%mod : (mod-std::abs(n)%mod);
 }
 
-int** generateDivisionTable()
+int** number::generateDivisionTable()
 {
     int** table = new int*[mod];
     for(int i=0; i<mod; i++) table[i] = new int[mod];
@@ -39,7 +40,7 @@ int** generateDivisionTable()
     return table;
 }
 
-void deleteDivisionTable(int** table)
+void number::deleteDivisionTable(int** table)
 {
     for(int i=0; i<mod; i++)  delete [](table[i]);
     delete []table;

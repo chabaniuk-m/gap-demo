@@ -10,8 +10,9 @@
 * TO DO - множення поліномів, parse from string
 */
 class Polynom {
-    static std::pair<Polynom,Polynom> division(const Polynom& lhs, const Polynom& rhs); //<Quotient,Remainder> (used for operators / and %)
 public:
+    static std::pair<Polynom,Polynom> division(const Polynom& lhs, const Polynom& rhs); //<Quotient,Remainder> (used for operators / and %)
+
     int len; // polynom length
     int power; // polynom power
     int* coeff; // coefficients in ascending order
@@ -22,7 +23,9 @@ public:
     Polynom(); // initialize empty polynom
     Polynom(const Polynom& toCopy); // copy constructor
     void print() const; // prints polynom to console
+    void recover(); // recover coefficients values, remove first zeros
     // operator overloading
+    Polynom& operator = (const Polynom& toCopy);
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator - (const Polynom& lhs, const Polynom& rhs);
     friend Polynom operator * (const Polynom& lhs, const Polynom& rhs);
