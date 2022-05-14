@@ -4,10 +4,11 @@
 
 /*
 * Клас Polynom
-* Реалізовано - додавання, віднімання
+* Реалізовано - додавання, віднімання,
+  множення в кільці, parsing from string
 * Коефіцієнти зберігаються у зростаючому порядку
 * 
-* TO DO - множення поліномів, parse from string
+* 
 */
 class Polynom {
     static std::pair<Polynom,Polynom> division(const Polynom& lhs, const Polynom& rhs); //<Quotient,Remainder> (used for operators / and %)
