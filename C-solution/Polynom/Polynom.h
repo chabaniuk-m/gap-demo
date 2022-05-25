@@ -25,6 +25,7 @@ public:
     void print() const; // prints polynom to console
     void recover(); // recover coefficients values, remove first zeros
     friend Polynom gcd(const Polynom& lhs, const Polynom& rhs); //greatest common divisor
+    friend Polynom cyclotomic(int n); //nth cyclotomic polynomial
     // operator overloading
     Polynom& operator = (const Polynom& toCopy);
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);

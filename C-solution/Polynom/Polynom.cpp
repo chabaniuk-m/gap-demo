@@ -359,3 +359,71 @@ bool operator!=(const Polynom& lhs, const Polynom& rhs)
 {
 	return !(lhs == rhs);
 }
+
+Polynom Polynom::cyclotomic(int n) {
+    int m = n / 2;
+    Polynom result(1);
+    result.coeff[0] = 1;
+    if (n % 2 == 0 && number::isPrime(m) && m % 2 != 0 && m != 1) {
+        if (number::isPrime(m)) {
+            int *keys = new int[m];
+            for (int i = 0; i < m; i++) {
+                if (i % 2 != 0)
+                    keys[i] = -1;
+                else
+                    keys[i] = 1;
+            }
+            return Polynom(keys, m);
+        }
+        for (int i = 1; i <= m; i++) {
+            if (m % i == 0 && number::mobius(m / i) == 1) {
+                int *keys = new int[i + 1];
+                if (i % 2 != 0)
+                    keys[i] = -1;
+                else
+                    keys[i] = 1;
+                keys[0] = -1;
+                Polynom multiplier(keys, i + 1);
+                result = result * multiplier;
+            }
+        }
+        for (int i = 1; i <= m; i++) {
+            if (m % i == 0 && number::mobius(m / i) == -1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom divider(keys, i + 1);
+                result = result / divider;
+            }
+        }
+    }
+    else {
+        if (number::isPrime(n))
+        {
+            int *keys = new int[n];
+            for (int i = 0; i < n; i++)
+                keys[i] = 1;
+            return Polynom(keys, n);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0 && number::mobius(n / i) == 1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom multiplier(keys, prime);
+                result = result * multiplier;
+            }
+        }
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0 && number::mobius(n / i) == -1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom divider(keys, prime);
+                result = result / divider;
+            }
+        }
+    }
+    return result;
+}
