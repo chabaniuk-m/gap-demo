@@ -46,7 +46,7 @@ void number::deleteDivisionTable(int** table)
     delete []table;
 }
 
-int mobius(int n) {
+int number::mobius(int n) {
     if (n == 1)
         return 1;
     int p = 0;
