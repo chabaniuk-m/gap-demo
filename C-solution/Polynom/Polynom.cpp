@@ -1,6 +1,7 @@
 #include "Polynom.h"
 #include "..\const.h"
 #include "..\Int\Int.h"
+#include "..\Int\task_4\task_4.cpp"
 #include <iostream>
 #include <cassert>
 #include <algorithm>
@@ -452,6 +453,13 @@ Polynom Polynom::derivative() {
 	while (i < this->power) {
 		result.coeff[i] = (this->coeff[i + 1] * (i + 1)) % mod;
 		i++;
+	}
+	return result;
+}
+int Polynom::valueAtPoint(int point) {
+	int result = 0;
+	for (int i = 0; i < this->len; i++) {
+		result += this->coeff[i] * MontgPow(point, i, mod);
 	}
 	return result;
 }
