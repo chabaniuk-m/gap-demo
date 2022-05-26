@@ -4,10 +4,11 @@
 
 /*
 * Клас Polynom
-* Реалізовано - додавання, віднімання
+* Реалізовано - додавання, віднімання,
+  множення в кільці, parsing from string
 * Коефіцієнти зберігаються у зростаючому порядку
 * 
-* TO DO - множення поліномів, parse from string
+* 
 */
 class Polynom {
     static std::pair<Polynom,Polynom> division(const Polynom& lhs, const Polynom& rhs); //<Quotient,Remainder> (used for operators / and %)
@@ -24,6 +25,7 @@ public:
     void print() const; // prints polynom to console
     void recover(); // recover coefficients values, remove first zeros
     friend Polynom gcd(const Polynom& lhs, const Polynom& rhs); //greatest common divisor
+    friend Polynom cyclotomic(int n); //nth cyclotomic polynomial
     // operator overloading
     Polynom& operator = (const Polynom& toCopy);
     friend Polynom operator + (const Polynom& lhs, const Polynom& rhs);

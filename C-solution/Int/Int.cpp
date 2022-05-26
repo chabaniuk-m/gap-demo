@@ -45,3 +45,18 @@ void number::deleteDivisionTable(int** table)
     for(int i=0; i<mod; i++)  delete [](table[i]);
     delete []table;
 }
+
+int mobius(int n) {
+    if (n == 1)
+        return 1;
+    int p = 0;
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 0 && number::isPrime(i)) {
+            if (n % (i * i) == 0)
+                return 0;
+            else
+                p++;
+        }
+    }
+    return (p % 2 != 0) ? -1 : 1;
+}

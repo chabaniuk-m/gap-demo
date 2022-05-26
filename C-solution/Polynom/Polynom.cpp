@@ -3,10 +3,82 @@
 #include "..\Int\Int.h"
 #include <iostream>
 #include <cassert>
+#include <algorithm>
+#include <map>
+#include <vector>
 
+/*
+	* Парсить рядок pol у многочлен.
+	* Вимоги до pol:
+		* Одночлени формату ax^b, розділені знаком  "+", де a, b - коефіцієнт і степінь
+		* Байдуже на пробіли
+		* Одночлени степені 1 можуть бути у вигляді "ax^1" або "ax"
+		* Одночлени степені 0 можуть бути у вигляді "ax^0" або "a"
+		* Одночлени однакових степенів можуть повторюватись
+		* Одночлени можна вводити в довільному порядку
+	*
+	* Examples:
+	* 3x^2 + 7x^5 + 4 - ok
+	* 2x^0 + 3x^1 + 4x^2 - ok
+	* 3x^1 + 3x + 2x^0 + 2 - ok (буде 6x + 4)
+	* 3x^3 + + 3x - не ок(зайвий плюс)
+*/
 Polynom::Polynom(std::string pol)
 {
-	// TO DO - parse from string	
+	std::map<int, int> values; // використовуємо map для збереження степені і коефіцієнту
+	pol.erase(std::remove_if(pol.begin(), pol.end(), isspace), pol.end()); // видаляємо пробіли
+	std::vector<std::string> monomials;
+
+	int pos = 0;
+	while ((pos = pol.find("+")) != std::string::npos) // розбиваємо на одночлени
+	{
+		monomials.push_back(pol.substr(0, pos));
+		pol.erase(0, pos + 1);
+	}
+	monomials.push_back(pol.substr(0, pos));
+	for (auto m : monomials)
+	{
+		int power_pos = m.find("^"), coef, power;
+		if (power_pos != std::string::npos)
+		{
+			std::string coef_s = m.substr(0, power_pos - 1);
+			std::string power_s = m.substr(power_pos + 1, std::string::npos);
+
+			coef = std::stoi(coef_s);
+			power = std::stoi(power_s);
+		}
+		else
+		{
+			int x_pos = m.find("x");
+			std::string coef_s;
+			if (x_pos != std::string::npos)
+			{
+				power = 1;
+				coef_s = m.substr(0, m.size() - 1);
+			}
+			else
+			{
+				power = 0;
+				coef_s = m.substr(0, m.size());
+			}
+			
+			coef = std::stoi(coef_s);
+		}
+		// якщо такий степінь вже був - додаємо коефіцієнт, інакше створюємо нову пару
+		if (values.count(power) == 0)
+			values.insert(std::make_pair(power, coef));
+		else
+			values[power] += coef;
+	}
+
+	int max_power = (values.rbegin())->first; // get max key in map
+	this->len = max_power + 1;
+	this->power = max_power;
+	coeff = new int[len];
+	for (int i = 0; i < len; i++)
+		coeff[i] = 0;
+	for (auto value : values)
+		coeff[value.first] = value.second % mod;	
 }
 
 Polynom::Polynom(int* coeff, int len)
@@ -192,10 +264,8 @@ Polynom operator-(const Polynom& lhs, const Polynom& rhs)
 Polynom operator*(const Polynom& lhs, const Polynom& rhs)
 {
 	/*
-	* Спочатку множимо лівий многочлен на правий, після
-	* цього результат ділимо на лівий многочлен і повертаємо остачу
+	* Множимо лівий многочлен на правий у кільці, беручи коефіцієнти по модулю
 	* Приклад: (2x^2 + x + 2)*(x^2+2x+1) = 2x^4 + x^2 + 2 (mod 5)
-	* Ділимо 2x^4 + x^2 + 2 на 2x^2 + x + 2 і повертаємо остачу (не реалізовано)
 	*/
 	Polynom result(lhs.power + rhs.power + 1);
 	for (int i = 0; i <= lhs.power; i++)
@@ -288,4 +358,72 @@ bool operator==(const Polynom& lhs, const Polynom& rhs)
 bool operator!=(const Polynom& lhs, const Polynom& rhs)
 {
 	return !(lhs == rhs);
+}
+
+Polynom cyclotomic(int n) {
+    int m = n / 2;
+    Polynom result(1);
+    result.coeff[0] = 1;
+    if (n % 2 == 0 && number::isPrime(m) && m % 2 != 0 && m != 1) {
+        if (number::isPrime(m)) {
+            int *keys = new int[m];
+            for (int i = 0; i < m; i++) {
+                if (i % 2 != 0)
+                    keys[i] = -1;
+                else
+                    keys[i] = 1;
+            }
+            return Polynom(keys, m);
+        }
+        for (int i = 1; i <= m; i++) {
+            if (m % i == 0 && number::mobius(m / i) == 1) {
+                int *keys = new int[i + 1];
+                if (i % 2 != 0)
+                    keys[i] = -1;
+                else
+                    keys[i] = 1;
+                keys[0] = -1;
+                Polynom multiplier(keys, i + 1);
+                result = result * multiplier;
+            }
+        }
+        for (int i = 1; i <= m; i++) {
+            if (m % i == 0 && number::mobius(m / i) == -1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom divider(keys, i + 1);
+                result = result / divider;
+            }
+        }
+    }
+    else {
+        if (number::isPrime(n))
+        {
+            int *keys = new int[n];
+            for (int i = 0; i < n; i++)
+                keys[i] = 1;
+            return Polynom(keys, n);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0 && number::mobius(n / i) == 1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom multiplier(keys, n);
+                result = result * multiplier;
+            }
+        }
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0 && number::mobius(n / i) == -1) {
+                int *keys = new int[i + 1];
+                keys[i] = 1;
+                keys[0] = -1;
+                Polynom divider(keys, n);
+                result = result / divider;
+            }
+        }
+    }
+    return result;
 }

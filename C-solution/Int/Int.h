@@ -30,5 +30,7 @@ namespace number
      */
     int** generateDivisionTable();
     void deleteDivisionTable(int** table);
+
+    int mobius(int n);
 }
 // #end
