@@ -79,16 +79,25 @@ textarea {
     width: 100%;
     height: auto;
 }
-
+/*Input field style*/
 .input{
   width: 100%;
-  height: 10%;
-  background-color: #8bceec;
-
+}
+.input input {
+  width: 100%;
+  height: 45px;
+  color: black;
+  font-size: 18px;
+  padding-left: 10px;
+  border: 3px solid #8bceec;
+  outline: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 700;
 }
 
+/*Input submit button style*/
 
-button.input {
+input[type=submit] {
   text-decoration: none;
   display: inline-block;
   margin-top: 15px;
@@ -96,30 +105,60 @@ button.input {
   height: 50px;
   line-height: 45px;
   border-radius: 15px;
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 3px;
-  font-weight: 600;
-  color: #524f4e;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #111010;
   background: #8bceec;
   box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
   transition: .3s;
+  border: none;
+  padding-left: 8px;
 }
-button.input:hover {
+input[type=submit]:hover {
   background: #2EE59D;
   box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
   color: white;
   transform: translateY(-7px);
 }
 
-
+/*Result field*/
 .output{
   width: 100%;
-  height: 10%;
-  background-color: #8becb7;
+  height: auto;
+  border: 3px solid rgba(12, 210, 29, 0.755);
+  padding: 1%;
+  font-size: 18px;
 }
-
+.output .block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+  margin: 10px;
+  padding: 0;
+  border-bottom: 2px solid rgba(12, 210, 29, 0.755);
+}
+.output .block p {
+  display: block;
+  font-weight: 900;
+  font-size: 20px;
+  background-color: rgba(12, 210, 29, 0.755);
+  height: auto;
+  width: 30%;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+.output .block span {
+  display: block;
+  height: auto;
+  background-color: white;
+  margin-left: 5px;
+  width: 70%;
+}
 div.error{
   width: 100%;
   height: 10%;
@@ -132,7 +171,7 @@ h1.error{
   text-decoration: 3px #ec5c5c underline;
 }
 
-
+/*Adaptive styles for the content*/
 @media (max-width: 992px){
     .main {
         flex-direction: column;
@@ -341,5 +380,6 @@ h1 {
     top: 4px;
     box-shadow: 0px 0px #d3545d;
   }
+/*Input part og the page*/
 
 

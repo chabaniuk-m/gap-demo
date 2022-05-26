@@ -427,3 +427,31 @@ Polynom Polynom::cyclotomic(int n) {
     }
     return result;
 }
+
+Polynom Polynom::derivative() {
+	if (!number::isPrime(n))
+		return;
+	Polynom result; //створюємо поліном, який буде результатом знаходження похідної
+	/*
+	  Встановлюємо значення степеня полінома-похідної
+	   * якщо початковий поліном був числом, то степінь результуючого полінома = 0
+	   * інакше присвоїти йому зменшений на одиницю степінь поточного полінома
+	*/
+	result.power = (this->power > 0) ? (this->power - 1) : this->power;
+	result.len = result.power + 1;
+	result.coeff = new int[result.len]; //створюємо масив коефіцієнтів при степенях змінної х
+	int i = 0;
+	if (result.power == 0) {
+		//якщо шукаємо похідну від полінома-числа, то у комірку старшого степеня похідної
+		//заносимо значення 0 і закінчуємо виконання функції.
+		result.coeff[result.power] = 0;
+		return result;
+	}
+	//переглядаємо коефіцієнти при відповідних степенях початкового полінома і 
+	//обчислюємо нові при степенях похідних
+	while (i < this->power) {
+		result.coeff[i] = (this->coeff[i + 1] * (i + 1)) % mod;
+		i++;
+	}
+	return result;
+}

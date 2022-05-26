@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/main_style.css" />
+    <link rel="stylesheet" href="../static/main_style.css" />
     <title>Solution test page</title>
-    <script src="static/calculator.js" async></script>
+    <script src="../static/calculator.js" async></script>
   </head>
   <body>
     <div class="wrap_flex">
@@ -159,12 +159,33 @@
           </p>
 
           <h1>Вхідні дані:</h1>
-          <div class="input"><p>Input:</p> </div>
-          <button class="input">
-            Розрахувати!
-          </button>
+          <form action="">
+            <div class="input">
+              <input type="text" name="inputInfo" placeholder="Input some value...">
+            </div>
+            <input type="submit" class="input" name = "submitInputInfo" value = "Розрахувати!">
+          </form>
+      
           <h1>Вихідні дані: </h1>
-          <div class="output"><p>Output:Error</p></div>
+          <div class="output">
+            
+            <div class="block">
+              <p>Обрана задача: </p>
+              <span>Швидке піднесення у степінь, використовуючи переведення
+                числа у форму Монтгомері</span>
+            </div>
+
+            <div class="block">
+              <p>Початкові дані: </p>
+              <span>.........some number...............</span>
+            </div>
+
+            <div class="block">
+              <p>Результат: </p>
+              <span>..........some number..............</span>
+            </div>
+          
+          </div>
           <div class="authors">
             <h1>Виконавці:</h1>
             <ul>
