@@ -46,12 +46,12 @@ void number::deleteDivisionTable(int** table)
     delete []table;
 }
 
-int mobius(int n) {
+int number::mobius(int n) {
     if (n == 1)
         return 1;
     int p = 0;
     for (int i = 1; i <= n; i++) {
-        if (n % i == 0 && isPrime(i)) {
+        if (n % i == 0 && number::isPrime(i)) {
             if (n % (i * i) == 0)
                 return 0;
             else

@@ -361,7 +361,7 @@ bool operator!=(const Polynom& lhs, const Polynom& rhs)
 	return !(lhs == rhs);
 }
 
-Polynom Polynom::cyclotomic(int n) {
+Polynom cyclotomic(int n) {
     int m = n / 2;
     Polynom result(1);
     result.coeff[0] = 1;
@@ -412,7 +412,7 @@ Polynom Polynom::cyclotomic(int n) {
                 int *keys = new int[i + 1];
                 keys[i] = 1;
                 keys[0] = -1;
-                Polynom multiplier(keys, prime);
+                Polynom multiplier(keys, n);
                 result = result * multiplier;
             }
         }
@@ -421,13 +421,14 @@ Polynom Polynom::cyclotomic(int n) {
                 int *keys = new int[i + 1];
                 keys[i] = 1;
                 keys[0] = -1;
-                Polynom divider(keys, prime);
+                Polynom divider(keys, n);
                 result = result / divider;
             }
         }
     }
     return result;
 }
+<<<<<<< HEAD
 
 Polynom Polynom::derivative() {
 	if (!number::isPrime(n))
@@ -463,3 +464,5 @@ int Polynom::valueAtPoint(int point) {
 	}
 	return result;
 }
+=======
+>>>>>>> 7733ad7c512fe345360f4eccd2751399bfcac738
