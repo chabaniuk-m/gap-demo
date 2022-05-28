@@ -1,6 +1,6 @@
 #pragma once
 #include "../task_4/task_4.cpp"
-#inclide <time.h>
+#incluide <time.h>
 
 /*
 Miller Rabin's primacy test
