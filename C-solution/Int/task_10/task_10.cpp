@@ -12,6 +12,8 @@ int n is the number to check, int t is the confidence level
 bool MiillerRabinTest(int n, int t)
 {
     srand(time(0));
+    if(n%2 == 0)
+        return  false;
     t = t >= 1 ? t : 1;
     //break the n-1 to the form r*2^s
     int r = n - 1;
