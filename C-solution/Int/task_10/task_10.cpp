@@ -9,7 +9,7 @@ if n is compounded - return FALSE
 the probability of error is 0.25 ^ t
 int n is the number to check, int t is the confidence level
 */
-bool MiillerRabinTest(int n, int t)
+bool MillerRabinTest(int n, int t)
 {
     srand(time(0));
     if(n%2 == 0)
