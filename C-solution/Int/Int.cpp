@@ -1,8 +1,12 @@
 #include "Int.h"
 #include <cmath>
+#include "task_10/task_10.cpp"
 
+//probability of error < 10^-13
 bool number::isPrime(int n)
 {
+    return MillerRabinTest(n, 20);
+    /*
     if(n<2) return false;
     int sqrt = static_cast<int>(std::sqrt(n)) + 1;
     for(int i=2; i<=sqrt; i++)
@@ -10,6 +14,7 @@ bool number::isPrime(int n)
         if(n%i==0) return false;
     }
     return true;
+    */
 }
 
 int number::recover(int n)
