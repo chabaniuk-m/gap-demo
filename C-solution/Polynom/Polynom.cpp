@@ -210,6 +210,7 @@ Polynom operator+(const Polynom& lhs, const Polynom& rhs)
 {
 	Polynom result;
 	result.power = std::max(lhs.power, rhs.power);
+	result.len = result.power + 1;
 	result.coeff = new int[result.power + 1];
 	int i = 0, j = 0;
 	while (i <= lhs.power && j <= rhs.power)
@@ -236,6 +237,7 @@ Polynom operator-(const Polynom& lhs, const Polynom& rhs)
 {
 	Polynom result;
 	result.power = std::max(lhs.power, rhs.power); // reserve max power
+	result.len = result.power + 1;
 	result.coeff = new int[result.power + 1];
 	int i = 0, j = 0;
 	while (i <= lhs.power && j <= rhs.power)
