@@ -1,69 +1,79 @@
 ﻿#include <iostream>
 #include "..\..\const.h"
 
-int bitLength(int n) {
-    int result = 0;
-    while (n > 0) {
+const int BASE = 2;
+
+unsigned int bitLength(unsigned int n)
+{
+    unsigned int count = 0;
+    while (n)
+    {
+        count++;
         n >>= 1;
-        result++;
     }
-    return result;
+    return count;
 }
 
-
 class Montgomery {
-      private: int mod, rrm, bLn;
-      Montgomery MontgF(int mod) {
-          Montgomery result;
+private:
+    unsigned long long  mod;
+    unsigned long long  rrm;
+    int BLn;
 
-          if (mod == 0 || (mod & 1) == 0) {
-              std::cout<<("Mod should be more than zero and odd");
-              exit(1);
-          }
+    unsigned long long  reduce(Montgomery mont, unsigned long long  t) {
+        unsigned long long  a = t;
+        int i;
 
-          result.mod = mod;
-          result.bLn = bitLength(mod);
-          result.rrm = (1 << (result.bLn * 2)) % mod;
+        for (i = 0; i < mont.BLn; i++) {
+            if ((a & 1) == 1) {
+                a += mont.mod;
+            }
+            a = a >> 1;
+        }
 
-          return result;
-      }
+        if (a >= mont.mod) {
+            a -= mont.mod;
+        }
+        return a;
+    }
 
-      int reduce(Montgomery Montg, int t) {
-          int a = t;
-          for (int i = 0; i < Montg.bLn; i++) {
-              if ((a & 1) == 1) {
-                  a += Montg.mod;
-              }
-              a = a >> 1;
-          }
+    Montgomery Montg(unsigned long long  mod) {
+        Montgomery res;
 
-          if (a >= Montg.mod) {
-              a -= Montg.mod;
-          }
-          return a;
-      }
+        if (mod == 0 || (mod & 1) == 0) {
+            std::cout << ("Mod should be more than zero and odd");
+            exit(1);
+        }
 
-      public:int MontPow(int x, int pow, int mod) {
-          Montgomery Montg = MontgF(mod);
+        res.mod = mod;
+        res.BLn = bitLength(mod);
+        res.rrm = (1ULL << (res.BLn * 2)) % mod;
 
-          int p = reduce(Montg, Montg.rrm);
-          int main = reduce(Montg, x * Montg.rrm);
-          int exp = pow;
-          while (bitLength(exp) > 0) {
-              if ((exp & 1) == 1) {
-                  p = reduce(Montg, p * main);
-              }
-              exp >>= 1;
-              main = reduce(Montg, main * main);
-          }
-          return reduce(Montg, p);
+        return res;
 
-      }
+    }
+public:
+    unsigned long long  MontPow(unsigned long long  x, unsigned long long  pow, unsigned long long  mod) {
+        Montgomery M = Montg(mod);
 
+        unsigned long long  p = reduce(M, M.rrm);
+        unsigned long long  main = reduce(M, x * M.rrm);
+        unsigned long long  exp = pow;
+        while (bitLength(exp) > 0) {
+            if ((exp & 1) == 1) {
+                p = reduce(M, p * main);
+            }
+            exp >>= 1;
+            main = reduce(M, main * main);
+        }
+        return reduce(M, p);
+    }
+  
 };
 
 
-int MontgPow(int a,int b, int mod=13) {
+
+int MontgPow(int a, int b, int mod = 13) {
     Montgomery x{};
-     return x.MontPow(a, b, mod);
+    return x.MontPow(a, b, mod);
 }
