@@ -10,13 +10,12 @@ add_executable(C_tests
         main_tests.cpp
         Polynom_tests.cpp
 
-        C-solution/const.h
+        ../C-solution/const.h
 
-        C-solution/Int/Int.h
-        C-solution/Int/Int.cpp
-        C-solution/Int/task_4/task_4.cpp
+        ../C-solution/Int/Int.h
+        ../C-solution/Int/Int.cpp
 
-        C-solution/Polynom/Polynom.h
-        C-solution/Polynom/Polynom.cpp)
+        ../C-solution/Polynom/Polynom.h
+        ../C-solution/Polynom/Polynom.cpp)
 
 target_link_libraries(C_tests gtest gtest_main)

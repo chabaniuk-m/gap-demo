@@ -430,11 +430,9 @@ Polynom cyclotomic(int n) {
     }
     return result;
 }
-<<<<<<< HEAD
 
 Polynom Polynom::derivative() {
-	if (!number::isPrime(n))
-		return;
+    assert(number::isPrime(mod));
 	Polynom result; //створюємо поліном, який буде результатом знаходження похідної
 	/*
 	  Встановлюємо значення степеня полінома-похідної
@@ -466,5 +464,3 @@ int Polynom::valueAtPoint(int point) {
 	}
 	return result;
 }
-=======
->>>>>>> 7733ad7c512fe345360f4eccd2751399bfcac738

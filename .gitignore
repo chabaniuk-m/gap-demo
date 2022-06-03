@@ -4,6 +4,7 @@
 # Олег, закинь .idea у себе в gitignore, ось це 👇🏻
 /.idea/
 /googletest/
+/C-test/cmake-build-debug/
 
 #Руденко Олександр
 /.vs/

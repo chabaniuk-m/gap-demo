@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "C-solution/Polynom/Polynom.h"
-#include "C-solution/const.h"
+#include "../C-solution/Polynom/Polynom.h"
+#include "../C-solution/const.h"
 
 int mod;
 
