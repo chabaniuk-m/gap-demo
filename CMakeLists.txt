@@ -17,7 +17,6 @@ add_executable(C_tests
         C-solution/Int/task_4/task_4.cpp
 
         C-solution/Polynom/Polynom.h
-        C-solution/Polynom/Polynom.cpp
-        C-solution/Polynom/task_3/task_3.cpp)
+        C-solution/Polynom/Polynom.cpp)
 
 target_link_libraries(C_tests gtest gtest_main)

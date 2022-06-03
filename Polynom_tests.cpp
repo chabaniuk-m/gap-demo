@@ -74,7 +74,7 @@ TEST(Polynom, gcd)
 
 TEST(Polynom, AddOperator) 
 {
-	mod = 5
+	mod = 5;
 	Polynom a, b, expected, actual;
 
 	// a = 1 + 2x + 3x^2 +4x^3
@@ -123,7 +123,7 @@ TEST(Polynom, AddOperator)
 }
 TEST(Polynom, SubtractOperator)
 {
-	mod = 5
+	mod = 5;
 	Polynom a, b, expected, actual;
 
 	// a = 1 + 2x + 3x^2
@@ -161,7 +161,7 @@ TEST(Polynom, SubtractOperator)
 }
 TEST(Polynom, MultiplyOperator)
 {
-	mod = 5
+	mod = 5;
 	Polynom a, b, expected, actual;
 
 	// a = 1 + 2x + 2x^2 + 3x^3 + 4x^4
