@@ -1,7 +1,6 @@
 #include "Polynom.h"
 #include "..\const.h"
 #include "..\Int\Int.h"
-#include "..\Int\task_4\task_4.cpp"
 #include <iostream>
 #include <cassert>
 #include <algorithm>
