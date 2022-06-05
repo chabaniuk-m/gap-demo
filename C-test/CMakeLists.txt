@@ -9,6 +9,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 add_executable(C_tests
         main_tests.cpp
         Polynom_tests.cpp
+        polynomial_tasks_tests.cpp
 
         ../C-solution/const.h
 
