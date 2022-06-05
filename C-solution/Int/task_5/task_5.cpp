@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include "..\Int.h"
-//#include "..\..\const.h"
 using namespace std;
 
-///факторизація числа
+// declaration
+int pollardRho(int number);
 
 ///Наївний алгоритм
 vector<int> naive(int num){
