@@ -4,7 +4,7 @@
  * Task 17: Check whether the polynomial is irreducible.
  */
 
-#include <bits/stdc++.h>
+#include <vector>
 #include "Polynom.h"
 
 using namespace std;
@@ -17,9 +17,9 @@ using namespace std;
  * @return vector of all primes less than value
  *         passed as the parameter
  */
-vector<int> sieve_of_eratosthenes_primes(int M)
+vector<int> sieve_of_eratosthenes_primes(const int M)
 {
-    bool isPrime[M + 1];
+    bool* isPrime = new bool(M + 1);
     memset(isPrime, true, sizeof(isPrime));
     for (int p = 2; p * p <= M; p++) {
         if (isPrime[p]) {
@@ -35,6 +35,8 @@ vector<int> sieve_of_eratosthenes_primes(int M)
             prime.push_back(i);
         }
     }
+
+    delete (isPrime);
     return prime;
 }
 
@@ -74,7 +76,7 @@ bool check_eisenstein_criterion(const int coefficients[], int prime, int length)
  */
 bool check_for_irreducibility(const Polynom& polynomial, int length)
 {
-    int coefficients[polynomial.len + 1];
+    int* coefficients = new int(polynomial.len + 1);
     int M = -1;
     for (int i = 0; i < polynomial.len; i++) {
         coefficients[i] = polynomial.coeff[i];
@@ -88,5 +90,7 @@ bool check_for_irreducibility(const Polynom& polynomial, int length)
             return true;
         }
     }
+
+    delete (coefficients);
     return false;
 }
