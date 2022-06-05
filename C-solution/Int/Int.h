@@ -8,6 +8,10 @@ int MontgPow(int a, int b, int mod);
 // Загальні функції з числами, які були потрібні для інших задач (реалізації в Int.cpp)
 namespace number
 {
+    // найбільший спільний дільник
+    // реалізація в task_9
+    long long gcd(int a, int b);
+
     // Перевірка числа на простоту
     bool isPrime(int n);
 
