@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "..\Int.h"
 //#include "..\..\const.h"
 using namespace std;
 
@@ -48,7 +49,7 @@ int pollardRho(int number){
     {
         a = customFunct(a, number);
         b = customFunct(customFunct(b, number), number);
-        tmp = gcd(abs(b - a), number);
+        tmp = number::gcd(abs(b - a), number);
         if (tmp > 1)
             break;
     }
