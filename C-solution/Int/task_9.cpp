@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 
 long long gcd(int a, int b) {
