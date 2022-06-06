@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "..\..\const.h"
+#include "..\Int.h"
 
 const int BASE = 2;
 

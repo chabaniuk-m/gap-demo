@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
-//#include "..\..\const.h"
+#include "..\Int.h"
 using namespace std;
 
-///факторизація числа
+// declaration
+int pollardRho(int number);
 
 ///Наївний алгоритм
 vector<int> naive(int num){
@@ -48,7 +49,7 @@ int pollardRho(int number){
     {
         a = customFunct(a, number);
         b = customFunct(customFunct(b, number), number);
-        tmp = gcd(abs(b - a), number);
+        tmp = number::gcd(abs(b - a), number);
         if (tmp > 1)
             break;
     }
