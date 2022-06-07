@@ -11,38 +11,38 @@ int n is the number to check, int t is the confidence level
 */
 bool MillerRabinTest(int n, int t)
 {
-    srand(time(0));
-    if(n == 2)
-        return true;
-    if(n < 2 || n%2 == 0)
-        return  false;
-    t = t >= 1 ? t : 1;
-    //break the n-1 to the form r*2^s
-    int r = n - 1;
-    int s = 0;
-    while(r%2 == 0)
-    {
-        r /= 2;
-        s++;
-    }
-    for(int i = 0; i < t; i++)
-    {
-        //random item from [2, n-2]
-        int a = rand()%(n-4) + 2;
-        //calculate y = a^r mod n;
-        int y = MontgPow(a, r, n);
-        if(y != 1 && y != n-1)
-        {
-            for(int j = 0; j < s && y != n - 1; j++)
-            {
-                //calculate y = y^2 mod n;
-                y = MontgPow(y, 2, n);
-                if(y == 1)
-                    return false;
-            }
-            if(y != n-1)
-                return false;
-        }  
-    }
-    return true;
+  srand(time(0));
+  if(n == 2)
+      return true;
+  if(n < 2 || n%2 == 0)
+      return  false;
+  t = t >= 1 ? t : 1;
+  //break the n-1 to the form r*2^s
+  int r = n - 1;
+  int s = 0;
+  while(r%2 == 0)
+  {
+      r /= 2;
+      s++;
+  }
+  for(int i = 0; i < t; i++)
+  {
+      //random item from [2, n-2]
+      int a = rand()%(n-4) + 2;
+      //calculate y = a^r mod n;
+      int y = MontgPow(a, r, n);
+      if(y != 1 && y != n-1)
+      {
+          for(int j = 0; j < s && y != n - 1; j++)
+          {
+              //calculate y = y^2 mod n;
+              y = MontgPow(y, 2, n);
+              if(y == 1)
+                  return false;
+          }
+          if(y != n-1)
+              return false;
+      }  
+  }
+  return true;
 }

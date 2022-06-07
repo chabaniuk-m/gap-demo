@@ -72,8 +72,6 @@ public:
   
 };
 
-
-
 int MontgPow(int a, int b, int mod = 13) {
     Montgomery x{};
     return x.MontPow(a, b, mod);
