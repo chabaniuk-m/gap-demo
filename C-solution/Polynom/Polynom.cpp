@@ -227,8 +227,8 @@ Polynom operator+(const Polynom& lhs, const Polynom& rhs)
 	{
 		result.coeff[j] = rhs.coeff[j];
 		j++;
-	}
-
+	}	
+	result.recover();
 	return result;
 }
 
