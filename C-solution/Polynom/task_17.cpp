@@ -19,8 +19,8 @@ using namespace std;
  */
 vector<int> sieve_of_eratosthenes_primes(const int M)
 {
-    bool* isPrime = new bool(M + 1);
-    memset(isPrime, true, sizeof(isPrime));
+    bool* isPrime = new bool[M + 1];
+    memset(isPrime, true, sizeof(*isPrime));
     for (int p = 2; p * p <= M; p++) {
         if (isPrime[p]) {
             for (int i = p * p;
@@ -36,7 +36,7 @@ vector<int> sieve_of_eratosthenes_primes(const int M)
         }
     }
 
-    delete (isPrime);
+    delete []isPrime;
     return prime;
 }
 
@@ -76,7 +76,7 @@ bool check_eisenstein_criterion(const int coefficients[], int prime, int length)
  */
 bool check_for_irreducibility(const Polynom& polynomial, int length)
 {
-    int* coefficients = new int(polynomial.len + 1);
+    int* coefficients = new int[polynomial.len + 1];
     int M = -1;
     for (int i = 0; i < polynomial.len; i++) {
         coefficients[i] = polynomial.coeff[i];
@@ -91,6 +91,6 @@ bool check_for_irreducibility(const Polynom& polynomial, int length)
         }
     }
 
-    delete (coefficients);
+    delete []coefficients;
     return false;
 }
