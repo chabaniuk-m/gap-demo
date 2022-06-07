@@ -1,6 +1,7 @@
 #pragma once
 
 #include "..\const.h"
+#include <string>
 
 // Прототипи функцій, які були потрібні для інших задач (реалізації в task_*)
 int MontgPow(int a, int b, int mod);
@@ -32,6 +33,9 @@ namespace number
      */
     int** generateDivisionTable();
     void deleteDivisionTable(int** table);
+
+    // знаходить квадратний корінь числа a за модулем n
+    std::string square_root(int a, int n);
 
     int mobius(int n);
 }
