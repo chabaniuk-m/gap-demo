@@ -16,7 +16,8 @@ bool MillerRabinTest(int n, int t)
         return true;
     if(n < 2 || n%2 == 0)
         return  false;
-    t = t >= 1 ? t : 1;
+    if(t < 1)
+        t = 1;
     //break the n-1 to the form r*2^s
     int r = n - 1;
     int s = 0;
