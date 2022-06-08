@@ -500,8 +500,9 @@ Polynom Polynom::derivative() {
 int Polynom::valueAtPoint(int point) {
 	int result = 0;
 	for (int i = 0; i < this->len; i++) {
-		result += this->coeff[i] * number::MontgPow(point, i, mod);
+		result += (this->coeff[i] * number::MontgPow(point, i, mod)) % mod;
 	}
+    result = result % mod;
 	return result;
 }
 

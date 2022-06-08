@@ -198,3 +198,63 @@ TEST(Polynom, MultiplyOperator)
 	EXPECT_EQ(expected.power, 10);
 	EXPECT_EQ(expected.len, 11);
 }
+TEST(Polynom, Derivative){
+	mod = 5;
+	Polynom a, expected, actual;
+
+	// a = 1 + 3x + 4x^2 + 4x^3
+	// expected = 3 + 3x + 2x^2
+	a = { new int[4]{1, 3, 4, 4}, 4 };
+	expected = { new int[3]{3, 3, 2}, 3 };
+	actual = a.derivative();
+	EXPECT_EQ(actual, expected);
+	EXPECT_EQ(expected.power, 2);
+	EXPECT_EQ(expected.len, 3);
+
+	// a = 1 + 3x + 2x^2 + 3x^3 + 3x^4
+	//expected = 3 + 4x + 4x^2 + 2x^3
+	a = { new int[5]{1, 3, 2, 3, 3}, 5 };
+	expected = { new int[4]{3, 4, 4, 2}, 4 };
+	actual = a.derivative();
+	EXPECT_EQ(actual, expected);
+	EXPECT_EQ(expected.power, 3);
+	EXPECT_EQ(expected.len, 4);
+
+	//a = 1 + 2x^5
+	//expected = 0
+	a = { new int[6]{1, 0, 0, 0, 0, 2}, 6 };
+	expected = { new int[1]{0}, 1 };
+	actual = a.derivative();
+	EXPECT_EQ(actual, expected);
+	EXPECT_EQ(expected.power, 0);
+	EXPECT_EQ(expected.len, 1);
+}
+TEST(Polynom, ValueAtPoint){
+	mod = 5;
+	int point = 2;
+	Polynom a;
+	int expected, actual;
+
+	// a = 1 + 3x + 4x^2 + 4x^3
+	// expected = 0
+	a = { new int[4]{1, 3, 4, 4}, 4 };
+	expected = 0;
+	actual = a.valueAtPoint(point);
+	EXPECT_EQ(actual, expected);
+
+	point = 1;
+	// a = 1 + 3x + 2x^2 + 3x^3 + 3x^4
+	//expected = 2
+	a = { new int[5]{1, 3, 2, 3, 3}, 5 };
+	expected = 2;
+	actual = a.valueAtPoint(point);
+	EXPECT_EQ(actual, expected);
+
+	point = 3;
+	//a = 1 + 2x^5
+	//expected = 4
+	a = { new int[6]{1, 0, 0, 0, 0, 2}, 6 };
+	expected = 4;
+	actual = a.valueAtPoint(point);
+	EXPECT_EQ(actual, expected);
+}
