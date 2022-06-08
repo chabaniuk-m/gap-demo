@@ -2,13 +2,15 @@
 #include "C-solution/const.h"
 #include <iostream>
 
+int mod;
+
 int main()
 {
     Polynom a,b;
 
-    mod = 17;
-    a = Polynom("6");
+    mod = 23;
+    a = Polynom("6x+2");
     b = Polynom("2");
 
-    std::cout<<"5";
+    (a/b).print();
 }

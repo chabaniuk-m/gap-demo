@@ -25,7 +25,6 @@
 */
 Polynom::Polynom(std::string pol)
 {
-    std::cout<<pol;
 	std::map<int, int> values; // використовуємо map для збереження степені і коефіцієнту
 	pol.erase(std::remove_if(pol.begin(), pol.end(), isspace), pol.end()); // видаляємо пробіли
 	std::vector<std::string> monomials;
@@ -80,7 +79,6 @@ Polynom::Polynom(std::string pol)
 		coeff[i] = 0;
 	for (auto value : values)
 		coeff[value.first] = value.second % mod;
-    std::cout<<"+";
 }
 
 Polynom::Polynom(int* coeff, int len)
