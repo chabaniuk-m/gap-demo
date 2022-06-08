@@ -195,35 +195,6 @@
                   <li class="a2">Руденко Олександр</li>
                 </ul>
               </div>
-              <h1>Код задачі:</h1>
-    
-              <textarea cols="100" rows="25">
-                    struct Input {};
-                            struct MoreInput {};
-                            
-                            struct ImplementationBase {
-                                virtual void setMoreInput(MoreInput) = 0;
-                                virtual void run(Input input) = 0;
-                            };
-                            
-                            
-                            struct MoreInputA {};
-                            MoreInputA convertToA(MoreInput);
-                            
-                            struct ImplementationA : public ImplementationBase {
-                                void run(Input input, MoreInputA more_input);
-                            
-                                MoreInputA more_input_a;
-                                void setMoreInput(MoreInput more_input) override {
-                                    more_input_a = convertToA(more_input);
-                                }
-                            
-                                void run(Input input) override {
-                                    run(input, more_input_a);
-                                }
-                            };
-                    </textarea
-              >
             </div>
         </div>
 

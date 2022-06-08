@@ -132,13 +132,7 @@
           <h1 class="task">
             Знаходження частки та остачі від ділення одного многочлена на інший. 
           </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-            doloribus consequatur beatae laborum expedita quo unde esse
-            assumenda praesentium amet, rem nemo consequuntur tempore odio
-            veniam est laudantium nihil! Est? Vitae voluptatem dicta vel minus
-            adipisci.
-          </p>
+          <p></p>
 
           <!--Form for operation with TWO POLYNOM-->
           <form action="" name="division" method="post">
@@ -196,35 +190,6 @@
               <li>Руденко Олександр</li>
             </ul>
           </div>
-          <h1>Код задачі:</h1>
-
-          <textarea cols="100" rows="25">
-                struct Input {};
-                        struct MoreInput {};
-                        
-                        struct ImplementationBase {
-                            virtual void setMoreInput(MoreInput) = 0;
-                            virtual void run(Input input) = 0;
-                        };
-                        
-                        
-                        struct MoreInputA {};
-                        MoreInputA convertToA(MoreInput);
-                        
-                        struct ImplementationA : public ImplementationBase {
-                            void run(Input input, MoreInputA more_input);
-                        
-                            MoreInputA more_input_a;
-                            void setMoreInput(MoreInput more_input) override {
-                                more_input_a = convertToA(more_input);
-                            }
-                        
-                            void run(Input input) override {
-                                run(input, more_input_a);
-                            }
-                        };
-                </textarea
-          >
         </div>
       </div>
 
