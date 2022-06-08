@@ -298,7 +298,7 @@ namespace number
     int probe = 2;
     
     while (curNum != 1) {
-      if(curNum%probe != 0) {
+      if(curNum % probe != 0) {
         probe++;
       } else {
         curNum /= probe;
@@ -317,7 +317,7 @@ namespace number
     while(num != 1) {
       cur = pollardRho(num);
       result.push_back(cur);
-      num = num/cur;
+      num = num / cur;
     }
 
     return result;
@@ -338,30 +338,53 @@ namespace number
     }
     return tmp;
   }
-   //8.1 Знаходження порядку елемента групи
-  //вертає порядок елемента мультиплікативної групи
-  //в іншому випадку вертає 0
-  int elementOrder(int a, int mod)
+
+//------------------------------------------------------------------------------
+  // Task 8 - Author = Motrych 
+  // вертає порядок елемента мультиплікативної групи
+  // в іншому випадку вертає 0
+  int elementOrder(int a, int mod) 
   {
-
-
-      if (gcd(a, mod) != 1)
-          return 0;
-
-      int result=1;
-      int K = 1;
-      
-      while (mod > K)
-      {
-          result = (result * a) % mod;
-
-          if (result == K)
-              return K;
-
-          K = K + 1;
-      }
-
+    if (gcd(a, mod) != 1)
       return 0;
+
+    int result=1;
+    int K = 1;
+    
+    while (mod > K)
+    {
+      result = (result * a) % mod;
+
+      if (result == K)
+        return K;
+
+      K = K + 1;
+    }
+
+    return 0;
+  }
+  // Other realisation - Author = Kilko
+  int element_order(int a, int mod) {
+    if (!is_co_prime(a, mod))
+      return -1; // Error 
+
+    vector<int> fact = naive(mod);
+    for (int i = 0; i < fact.size(); i++) {
+      int e = 1;
+      for (int j = 0; j < fact[i]; j++) {
+        e *= a;
+        e %= mod;
+      }
+      if (e == 1)
+        return fact[i];
+    }
+
+    return -1; // Not found
+  }
+
+  bool generator(int a, int mod) {
+    if (!is_co_prime(a, mod))
+      return false; // Error
   }
 }
 
