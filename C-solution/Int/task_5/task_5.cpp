@@ -44,7 +44,7 @@ int customFunct(int param, int mod){
 }
 
 int pollardRho(int number){
-     int a = 2, b = 2, tmp;
+    int a = 2, b = 2, tmp;
     while (true)
     {
         a = customFunct(a, number);
