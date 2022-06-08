@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 
 int mod;
 
@@ -364,7 +365,7 @@ namespace number
   }
   // Other realisation - Author = Kilko
   int element_order(int a, int mod) {
-    if (!is_co_prime(a, mod))
+    if (!is_co_prime(a, mod) || a >= mod)
       return -1; // Error 
 
     vector<int> fact = naive(mod);
@@ -381,9 +382,37 @@ namespace number
     return -1; // Not found
   }
 
-  bool generator(int a, int mod) {
-    if (!is_co_prime(a, mod))
+  bool is_generator(int a, int mod) {
+    if (!is_co_prime(a, mod) || a >= mod)
       return false; // Error
+
+    vector<int> group;
+    for (int i = 1; i < mod; i++) {
+      if(is_co_prime(i, mod) && i != a)
+        group.push_back(i);
+    }
+
+    std::set<int> res;
+    int t;
+    for (int i = 0; i < group.size(); i++) {
+      res.clear();
+      t = a;
+      while(true) {
+        if (t == group[i])
+          break;
+        else {
+          for (auto r : res) {
+            if (t == r)
+              return false;
+          }
+          res.insert(t);
+          t *= a;
+          t %= mod;
+        }
+      }
+    }
+
+    return true;
   }
 }
 

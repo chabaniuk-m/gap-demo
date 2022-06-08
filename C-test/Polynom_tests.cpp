@@ -276,9 +276,9 @@ TEST(Polynom, ValueAtPoint){
 
 	point = 3;
 	//a = 1 + 2x^5
-	//expected = 4
+	//expected = 2
 	a = { new int[6]{1, 0, 0, 0, 0, 2}, 6 };
-	expected = 4;
+	expected = 2;
 	actual = a.valueAtPoint(point);
 	EXPECT_EQ(actual, expected);
 }
