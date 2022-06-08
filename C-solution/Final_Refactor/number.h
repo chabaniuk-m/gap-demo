@@ -174,8 +174,9 @@ namespace number
   }
 
 //------------------------------------------------------------------------------
-  // Task 3 - Author = Rudenko
-  
+  // Task 3 - Author = Rudenko & Poliakov
+
+  // обернений елемент
   int inverted_element(int value) {
     int result = 0;
     if (is_co_prime(mod, value)) {
@@ -184,10 +185,10 @@ namespace number
         if (result == 1)
           return i;
       }
-    } else {
-      // -1 - error
-      return -1;
     }
+
+    // -1 - error
+    return -1;
   }
 
   // перевірка чи mod і value взаємнопрості
@@ -203,6 +204,13 @@ namespace number
       return true;
     else
       return false;
+  }
+
+  // ділення чисел (a/b)
+  int divide(int a, int b) {
+    if (!number::isPrime(mod))
+      return -1;
+    return number::recover(a*inverted_element(b));
   }
 
 //------------------------------------------------------------------------------
