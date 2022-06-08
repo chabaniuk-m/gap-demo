@@ -1,0 +1,4 @@
+"C:\GAMES and PROGRAMS\PROGRAMS\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/GAMES and PROGRAMS/PROGRAMS/CLion 2020.2.3/bin/ninja/win/ninja.exe" -G Ninja -S "C:\GAMES and PROGRAMS\my programs\univ\2\univ2.2_GA_project\gap-demo" -B "C:\GAMES and PROGRAMS\my programs\univ\2\univ2.2_GA_project\gap-demo\cmake-build-debug"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/GAMES and PROGRAMS/my programs/univ/2/univ2.2_GA_project/gap-demo/cmake-build-debug

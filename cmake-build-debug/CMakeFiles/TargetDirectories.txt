@@ -1,0 +1,3 @@
+C:/GAMES and PROGRAMS/my programs/univ/2/univ2.2_GA_project/gap-demo/cmake-build-debug/CMakeFiles/task_13_demo.dir
+C:/GAMES and PROGRAMS/my programs/univ/2/univ2.2_GA_project/gap-demo/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/GAMES and PROGRAMS/my programs/univ/2/univ2.2_GA_project/gap-demo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
