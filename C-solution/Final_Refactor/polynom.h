@@ -329,8 +329,8 @@ std::pair<Polynom,Polynom> Polynom::division(const Polynom& lhs, const Polynom& 
      * Вважається, що:
      * - mod - просте число (!Обов'язкова умова для кільця многочленів!)
     */
-    assert(number::isPrime(mod));
-    assert(rhs != Polynom());
+    if(!number::isPrime(mod) || rhs == Polynom())
+        return {Polynom("-1"),Polynom("-1")};
 
     Polynom lhsC(lhs), rhsC(rhs);
     lhsC.recover();
