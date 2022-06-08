@@ -1,4 +1,4 @@
-# gap-demo
+# gap-demo /F
 
 ### *General Algebra Project (demo)*
 
