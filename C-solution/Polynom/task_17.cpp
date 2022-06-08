@@ -2,6 +2,13 @@
  * @author Vladyslav Shupliakov
  *
  * Task 17: Check whether the polynomial is irreducible.
+ *
+ * Eisenstein's irreducibility criterion is a sufficient
+ * condition assuring that an integer polynomial p(x) is
+ * irreducible in the polynomial ring.
+ *
+ * Note: Eisenstein criterion is only a sufficient, and no a
+ * necessary condition.
  */
 
 #include <vector>
@@ -35,7 +42,6 @@ vector<int> sieve_of_eratosthenes_primes(const int M)
             prime.push_back(i);
         }
     }
-
     delete []isPrime;
     return prime;
 }
@@ -70,19 +76,19 @@ bool check_eisenstein_criterion(const int coefficients[], int prime, int length)
  * Checks for polynomial's irreducibility.
  *
  * @param polynomial entered polynomial
- * @param length     length of a polynomial
  * @return true if the polynomial is irreducible
  *         false - otherwise
  */
-bool check_for_irreducibility(const Polynom& polynomial, int length)
+bool check_for_irreducibility(const Polynom& polynomial)
 {
-    int* coefficients = new int[polynomial.len + 1];
+    int length = polynomial.len;
+    int* coefficients = new int[length + 1];
     int M = -1;
-    for (int i = 0; i < polynomial.len; i++) {
+    for (int i = 0; i < length; i++) {
         coefficients[i] = polynomial.coeff[i];
     }
     for (int i = 0; i < length; i++) {
-        M = max(M, coefficients[i]);
+        M = max(M, abs(coefficients[i]));
     }
     vector<int> primes = sieve_of_eratosthenes_primes(M + 1);
     for (int prime : primes) {
@@ -90,7 +96,6 @@ bool check_for_irreducibility(const Polynom& polynomial, int length)
             return true;
         }
     }
-
     delete []coefficients;
     return false;
 }
