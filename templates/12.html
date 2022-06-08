@@ -133,12 +133,11 @@
             Знаходження похідної многочлена. 
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-            doloribus consequatur beatae laborum expedita quo unde esse
-            assumenda praesentium amet, rem nemo consequuntur tempore odio
-            veniam est laudantium nihil! Est? Vitae voluptatem dicta vel minus
-            adipisci.
+            Процедура знаходження похідної многочлена зводиться до того, 
+            щоб обрахувати нові значення коефіцієнтів при відповідних степенях, 
+            попередньо врахувавши, що ми працюємо по деякому модулю mod. 
           </p>
+
           <!--Form for operation with TWO POLYNOM-->
           <form action="" name="deriv_pol" method="post">
             <div class="input">
@@ -162,6 +161,12 @@
           <h1 class="task">
             Знаходження значення многочлена у точці.
           </h1>
+          <p>
+            Для того щоб знайти значення многочлена у точці ми скористаємося 
+            швидким піднесенням числа до степеня шляхом переведення числа у форму Монтгомері 
+            (задача №4) та проведемо обрахунки по модулю mod, помноживши отримані 
+            значення на коефіцієнти при степенях членів.
+          </p>
           <form action="" name="value_inPoint" method="post">
             <div class="input">
               <input type="number" name="mod" min=1 placeholder="Введіть модуль..." required>
@@ -192,32 +197,47 @@
           </div>
           <h1>Код задачі:</h1>
 
-          <textarea cols="100" rows="25">
-                struct Input {};
-                        struct MoreInput {};
-                        
-                        struct ImplementationBase {
-                            virtual void setMoreInput(MoreInput) = 0;
-                            virtual void run(Input input) = 0;
-                        };
-                        
-                        
-                        struct MoreInputA {};
-                        MoreInputA convertToA(MoreInput);
-                        
-                        struct ImplementationA : public ImplementationBase {
-                            void run(Input input, MoreInputA more_input);
-                        
-                            MoreInputA more_input_a;
-                            void setMoreInput(MoreInput more_input) override {
-                                more_input_a = convertToA(more_input);
-                            }
-                        
-                            void run(Input input) override {
-                                run(input, more_input_a);
-                            }
-                        };
-                </textarea
+          <textarea cols="100" rows="40">
+
+        
+        Polynom Polynom::derivative() 
+        {
+            assert(number::isPrime(mod));
+            Polynom result; //створюємо поліном, який буде результатом знаходження похідної
+            /*
+              Встановлюємо значення степеня полінома-похідної
+              * якщо початковий поліном був числом, то степінь результуючого полінома = 0
+              * інакше присвоїти йому зменшений на одиницю степінь поточного полінома
+            */
+            result.power = (this->power > 0) ? (this->power - 1) : this->power;
+            result.len = result.power + 1;
+
+            //створюємо масив коефіцієнтів при степенях змінної х
+            result.coeff = new int[result.len]; 
+            int i = 0;
+            if (result.power == 0) {
+              //якщо шукаємо похідну від полінома-числа, то у комірку старшого 
+              //степеня похідної заносимо значення 0 і закінчуємо виконання функції.
+              result.coeff[result.power] = 0;
+              return result;
+            }
+                //переглядаємо коефіцієнти при відповідних степенях початкового полінома і 
+                //обчислюємо нові при степенях похідних
+            while (i < this->power) {
+              result.coeff[i] = (this->coeff[i + 1] * (i + 1)) % mod;
+              i++;
+            }
+        return result;
+      }
+      int Polynom::valueAtPoint(int point) {
+        int result = 0;
+        for (int i = 0; i < this->len; i++) {
+          result += (this->coeff[i] * number::MontgPow(point, i, mod)) % mod;
+        }
+          result = result % mod;
+        return result;
+      }
+          </textarea
           >
         </div>
       </div>
