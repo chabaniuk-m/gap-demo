@@ -1,5 +1,6 @@
 #include <iostream>
 #include "..\..\const.h"
+#include "..\Int.h"
 
 using namespace std;
 bool is_co_prime(int a, int b);
@@ -47,4 +48,17 @@ bool is_co_prime(int a , int b) {
 	{
 		return false;
 	}
+}
+
+// головна функція  (ділення чисел)
+// a/b
+int divide(int a, int b) {
+    if (!number::isPrime(mod))
+        return -1;
+    int** divTable = number::generateDivisionTable();
+    a = number::recover(a);
+    b = number::recover(b);
+    int res = divTable[a][b];
+    number::deleteDivisionTable(divTable);
+    return res;
 }

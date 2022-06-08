@@ -10,11 +10,13 @@ add_executable(C_tests
         main_tests.cpp
         Polynom_tests.cpp
         polynomial_tasks_tests.cpp
+        Int_tests.cpp
 
         ../C-solution/const.h
 
         ../C-solution/Int/Int.h
         ../C-solution/Int/Int.cpp
+        ../C-solution/Int/task_3/task_3.cpp
 
         ../C-solution/Polynom/Polynom.h
         ../C-solution/Polynom/Polynom.cpp)

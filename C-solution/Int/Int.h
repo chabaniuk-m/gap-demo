@@ -5,6 +5,8 @@
 
 // Прототипи функцій, які були потрібні для інших задач (реалізації в task_*)
 int MontgPow(int a, int b, int mod);
+int inverted_element(int value);
+int divide(int a, int b);
 
 // Загальні функції з числами, які були потрібні для інших задач (реалізації в Int.cpp)
 namespace number
