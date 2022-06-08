@@ -338,6 +338,31 @@ namespace number
     }
     return tmp;
   }
+   //8.1 Знаходження порядку елемента групи
+  //вертає порядок елемента мультиплікативної групи
+  //в іншому випадку вертає 0
+  int elementOrder(int a, int mod)
+  {
+
+
+      if (gcd(a, mod) != 1)
+          return 0;
+
+      int result=1;
+      int K = 1;
+      
+      while (mod > K)
+      {
+          result = (result * a) % mod;
+
+          if (result == K)
+              return K;
+
+          K = K + 1;
+      }
+
+      return 0;
+  }
 }
 
 
