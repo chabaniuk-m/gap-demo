@@ -26,6 +26,18 @@ TEST(Polynom, operatorQuotient)
     b = {new int[6]{3,1,3,0,5,0},6};
     res = Polynom(new int[1]{4},1);
     EXPECT_EQ(a/b, res);
+
+    mod = 7;
+    a = {new int[7]{6,0,1,3,6,0,0},7};
+    b = {new int[6]{0,0,0,0,0,0},6};
+    res = Polynom(new int[1]{-1},1);
+    EXPECT_EQ(a/b, res);
+
+    mod = 1000;
+    a = {new int[7]{6,0,1,3,6,0,0},7};
+    b = {new int[6]{3,1,3,0,5,0},6};
+    res = Polynom(new int[1]{-1},1);
+    EXPECT_EQ(a%b, res);
 }
 
 TEST(Polynom, operatorRemainder)
@@ -49,6 +61,18 @@ TEST(Polynom, operatorRemainder)
     a = {new int[7]{6,0,1,3,6,0,0},7};
     b = {new int[6]{3,1,3,0,5,0},6};
     res = Polynom(new int[4]{1,3,3,3},4);
+    EXPECT_EQ(a%b, res);
+
+    mod = 7;
+    a = {new int[7]{6,0,1,3,6,0,0},7};
+    b = {new int[6]{0,0,0,0,0,0},6};
+    res = Polynom(new int[1]{-1},1);
+    EXPECT_EQ(a%b, res);
+
+    mod = 1000;
+    a = {new int[7]{6,0,1,3,6,0,0},7};
+    b = {new int[6]{3,1,3,0,5,0},6};
+    res = Polynom(new int[1]{-1},1);
     EXPECT_EQ(a%b, res);
 }
 

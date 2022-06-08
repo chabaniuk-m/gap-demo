@@ -133,7 +133,7 @@
                 Швидке піднесення у степінь, використовуючи переведення числа у форму Монтгомері
               </h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quam, alias beatae explicabo minus similique nostrum ullam. Impedit cum maxime corrupti similique totam exercitationem quaerat. Consectetur incidunt expedita ab cupiditate.
+              Підносить число в степінь по модулю, використовуючи переведення числа у форму Монтгомері. <br> Модуль повинен бути непарний та більший нуля.
               </p>
               
               <!--Form for operation with TWO INT number-->
@@ -169,33 +169,12 @@
               </div>
               <h1>Код задачі:</h1>
     
-              <textarea cols="100" rows="25">
-                    struct Input {};
-                            struct MoreInput {};
-                            
-                            struct ImplementationBase {
-                                virtual void setMoreInput(MoreInput) = 0;
-                                virtual void run(Input input) = 0;
-                            };
-                            
-                            
-                            struct MoreInputA {};
-                            MoreInputA convertToA(MoreInput);
-                            
-                            struct ImplementationA : public ImplementationBase {
-                                void run(Input input, MoreInputA more_input);
-                            
-                                MoreInputA more_input_a;
-                                void setMoreInput(MoreInput more_input) override {
-                                    more_input_a = convertToA(more_input);
-                                }
-                            
-                                void run(Input input) override {
-                                    run(input, more_input_a);
-                                }
-                            };
-                    </textarea
-              >
+                 <h1>Використані джерела:</h1>
+    
+            <ul>
+            <li><a href="http://www.cecs.uci.edu/~papers/compendium94-03/papers/2002/fpga02/pdffiles/2_2.pdf">http://www.cecs.uci.edu/~papers/compendium94-03/papers/2002/fpga02/pdffiles/2_2.pdf</a></li>
+            <li><a href="https://link.springer.com/content/pdf/10.1007/3-540-48059-5_9.pdf">https://link.springer.com/content/pdf/10.1007/3-540-48059-5_9.pdf</a></li>
+          </ul>
             </div>
         </div>
 
