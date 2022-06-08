@@ -5,7 +5,6 @@
 #include <string>
 
 int mod;
-const int BASE = 2; // I don`t know why this exists.
 
 using namespace std;
 
